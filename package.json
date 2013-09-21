@@ -1,0 +1,30 @@
+{
+  "name": "angular-pubnub",
+  "version": "0.0.1",
+  "main": "angular-pubnub.js",
+  "description": "The best module ever.",
+  "homepage": "https://github.com/gdi2290/angular-pubnub",
+  "bugs": "https://github.com/gdi2290/angular-pubnub/issues",
+  "author": {
+    "name": "Patrick Stapleton",
+    "email": "patrick@gdi2290.com",
+    "url": "www.gdi2290.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdi2290/angular-pubnub"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "load-grunt-tasks": "~0.1.0",
+    "time-grunt": "~0.1.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.0"
+  }
+}
