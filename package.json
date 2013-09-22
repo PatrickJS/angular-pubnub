@@ -1,6 +1,6 @@
 {
   "name": "angular-pubnub",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "main": "angular-pubnub.js",
   "description": "The best module ever.",
   "homepage": "https://github.com/gdi2290/angular-pubnub",
