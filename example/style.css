@@ -1,0 +1,42 @@
+#messages div.message {
+border-bottom: solid #fff 1px;
+padding: 0.7em;
+font-family: 'Chau Philomene One', sans-serif;
+height: 58px;
+
+}
+#messages div.message p {
+    margin: 0.2em;
+    padding: 0;
+    color: #333;
+}
+#messages div.message p.user {
+    font-weight: bold;
+}
+
+
+#messages .avatar-frame{float: left; margin-right:10px; padding:0px; border: 2px solid #fff;}
+#messages .avatar-frame,.avatar-frame img {
+width: 50px;
+height: 50px;
+-webkit-border-radius: 10px; /* Saf3+, Chrome */
+border-radius: 10px; /* Opera 10.5, IE 9 */
+/*-moz-border-radius: 30px; Disabled for FF1+ */
+float: left;
+margin-right: 14px;
+}
+
+
+label{
+font-weight:bold;
+}
+
+.well, #progress_bar{
+ border-radius:0;
+ margin-top:0;
+}
+
+.bar,#progress_bar{
+    width:100%;
+    margin-bottom:0;
+}

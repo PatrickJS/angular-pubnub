@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular PubNub</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="PubNubChat">
+    <div pub-key="pub-8e474368-7add-4283-9b87-caf9efbcdedc" sub-key="sub-1ffec1f3-9463-11e1-9376-77819258e702" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+
+    <div ng-controller="MainCtrl">
+        <div class="progress progress-striped active" id="progress_bar">
+          <div class="bar" style="width: 100%;"></div>
+        </div>
+        <div class="well">
+        <b>Status: {{realtimeStatus}} </b>
+            <form class="form-horizontal">
+                <label>Name:</label> <input placeholder="Your Name" type="text" name="username" ng-model="message.username"/> <br/>
+    <label>Email:</label> <input placeholder="Your Email" type="text" name="email" ng-model="message.email"/> <br/>
+                <label>Message:</label> <input placeholder="What's on your mind?" type="text" name="text" ng-model="message.text"/>
+
+                <button type="submit" ng-click="publish()" class="btn btn-primary">Send</button>
+            </form>
+            <hr/>
+
+
+    <!-- Message List -->
+    <div id="messages" class="table-striped">
+        <div class="message" ng-repeat="message in messages">
+        <div class="avatar-frame">
+        <img ng-src="http://www.gravatar.com/avatar/{{message.email}}?s=60&r=R&d=https://www.guardly.com/commonassets/images/img_profile_placeholder.png" class="avatar avatar-60 photo" height="60" width="60"/>
+        </div>
+        <p class="user">{{message.username}} said:</p>
+            <p class="text">{{message.text}}</p>
+        </div>
+    </div>
+</body>
+<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+<script src="main.js"></script>
+<script src="../angular-pubnub.js"></script>
+</html>
