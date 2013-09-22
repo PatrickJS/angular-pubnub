@@ -22,7 +22,7 @@ angular.module('directives', [])
 
 // Controllers Module
 angular.module('controllers', [])
-  .controller('MainCtrl', function($scope) {
+  .controller('MainCtrl', function($scope, $PubNub) {
     $scope.messages = [];
     $scope.realtimeStatus = "Connecting...";
     $scope.channel = "pubnub_chat";
@@ -30,17 +30,16 @@ angular.module('controllers', [])
 
     //publish a chat message
     $scope.publish = function(){
-
-        //toggle the progress bar
+      $PubNub.publish({
+          channel : $scope.channel,
+          message : $scope.message
+      }, function() {
+        // toggle the progress bar
         $('#progress_bar').slideToggle();
 
-         PUBNUB.publish({
-                channel : $scope.channel,
-                message : $scope.message
-            })
-
-        //reset the message text
-       $scope.message.text = "";
+        // reset the message text
+        $scope.message.text = "";
+      })
     }
 
     //gets the messages history
