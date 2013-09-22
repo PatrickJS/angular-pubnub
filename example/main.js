@@ -30,7 +30,7 @@ angular.module('filters', ['md5'])
   })
   .filter('gravatar', function(md5) {
     return function(text) {
-      return (text) ? md5.createHash(text) : '';
+      return (text) ? md5.createHash(text.toLowerCase()) : '';
     }
   });
 

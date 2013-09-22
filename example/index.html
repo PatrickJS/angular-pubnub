@@ -38,7 +38,7 @@
   <div id="messages" class="table-striped">
     <div class="message" ng-repeat="message in messages | reverse">
     <div class="avatar-frame">
-    <img ng-src="http://www.gravatar.com/avatar/{{ message.email | gravatar }}" class="avatar avatar-60 photo" height="60" width="60"/>
+    <img ng-src="http://www.gravatar.com/avatar/{{ message.email | gravatar }}?s=60" class="avatar avatar-60 photo" height="60" width="60"/>
     </div>
     <p class="user">{{ message.username }} said:</p>
       <p class="text">{{ message.text }}</p>
