@@ -14,32 +14,34 @@
   </div>
 
   <div ng-controller="MainCtrl">
-  <div class="progress progress-striped active" id="progress_bar">
-    <div class="bar" style="width: 100%;"></div>
-  </div>
   <div class="well">
-  <b>Status: {{realtimeStatus}} </b>
+  <b>Status: {{ realtimeStatus }} </b>
     <form class="form-horizontal">
       <label>Name:</label>
-      <input ng-model="message.username" placeholder="Your Name" type="text" name="username">
+      <input placeholder="Your Name" type="text" name="username"
+             ng-model="message.username">
       <br/>
       <label>Email:</label>
-      <input ng-model="message.email" placeholder="Your Email" type="text" name="email">
+      <input placeholder="Your Email" type="text" name="email"
+             ng-model="message.email">
       <br/>
-        <label>Message:</label> <input placeholder="What's on your mind?" type="text" name="text" ng-model="message.text"/>
-        <button ng-click="publish()" type="submit" class="btn btn-primary">Send</button>
+      <label>Message:</label>
+      <input placeholder="What's on your mind?" type="text" name="text"
+             ng-model="message.text">
+      <button type="submit" class="btn btn-primary"
+              ng-click="publish()">Send</button>
     </form>
     <hr/>
 
 
   <!-- Message List -->
   <div id="messages" class="table-striped">
-    <div class="message" ng-repeat="message in messages">
+    <div class="message" ng-repeat="message in messages | reverse">
     <div class="avatar-frame">
-    <img ng-src="http://www.gravatar.com/avatar/{{message.email}}?s=60&r=R&d=https://www.guardly.com/commonassets/images/img_profile_placeholder.png" class="avatar avatar-60 photo" height="60" width="60"/>
+    <img ng-src="http://www.gravatar.com/avatar/{{ message.email | gravatar }}" class="avatar avatar-60 photo" height="60" width="60"/>
     </div>
-    <p class="user">{{message.username}} said:</p>
-      <p class="text">{{message.text}}</p>
+    <p class="user">{{ message.username }} said:</p>
+      <p class="text">{{ message.text }}</p>
     </div>
   </div>
 
