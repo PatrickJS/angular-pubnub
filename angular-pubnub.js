@@ -15,7 +15,6 @@
             }, 0);
           };
         };
-
         return {
           subscribe: function(args, callback) {
             callback = callback || args['callback'];
@@ -34,8 +33,14 @@
           unsubscribe: function(channel) {
             pubnub.unsubscribe(channel);
           },
-          history: function(arg, callback) {
-
+          history: function(args, callback) {
+            callback = callback || args['callback'];
+            args['callback'] = undefined;
+            if (callback) {
+              pubnub.history(args, asyncAngularify(callback));
+            } else {
+              pubnub.history(args);
+            }
           }
 
         }; // end return
