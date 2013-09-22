@@ -2,8 +2,44 @@
 (function() {
   'use strict';
 
-  angular.module('angular-pubnub', []).
-    provider('PubNub', function () {
+  angular.module('angular-pubnub', [])
+    .provider('$PubNub', function() {
+      this.$get = function($window, $timeout) {
+        var pubnub = $window.PUBNUB;
 
-    });
+        var asyncAngularify = function(callback) {
+          return function(args) {
+            var args = arguments;
+            $timeout(function () {
+              callback.apply(pubnub, args);
+            }, 0);
+          };
+        };
+
+        return {
+          subscribe: function(args, callback) {
+            callback = callback || args['callback'];
+            args['callback'] = undefined;
+            pubnub.subscribe(args, asyncAngularify(callback));
+          },
+          publish: function(args, callback) {
+            callback = callback || args['callback'];
+            args['callback'] = undefined;
+            if (callback) {
+              pubnub.publish(args, asyncAngularify(callback));
+            } else {
+              pubnub.publish(args);
+            }
+          },
+          unsubscribe: function(channel) {
+            pubnub.unsubscribe(channel);
+          },
+          history: function(arg, callback) {
+
+          }
+
+        }; // end return
+      }; // end $get
+    }); // end provider
+
 }());
