@@ -9,7 +9,7 @@
 
         var asyncAngularify = function(callback) {
           return function(args) {
-            var args = arguments;
+            args = arguments;
             $timeout(function () {
               callback.apply(pubnub, args);
             }, 0);
