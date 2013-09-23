@@ -1,3 +1,11 @@
+.keychain {
+  width: 330.5px;
+  height: 91.5px;
+  padding: 10px;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 #messages div.message {
   border-bottom: solid #fff 1px;
   padding: 0.7em;

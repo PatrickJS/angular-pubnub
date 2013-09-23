@@ -13,38 +13,44 @@
     id="pubnub">
   </div>
 
+  <a href="https://keychainlogistics.com/" target="_blank">
+    <img class="keychain" src="https://dl.dropboxusercontent.com/u/7020515/Keychain/keychAin.png">
+  </a>
+
   <div ng-controller="MainCtrl">
-  <div class="well">
-  <b>Status: {{ realtimeStatus }} </b>
-    <form class="form-horizontal">
-      <label>Name:</label>
-      <input placeholder="Your Name" type="text" name="username"
-             ng-model="message.username">
-      <br/>
-      <label>Email:</label>
-      <input placeholder="Your Email" type="text" name="email"
-             ng-model="message.email">
-      <br/>
-      <label>Message:</label>
-      <input placeholder="What's on your mind?" type="text" name="text"
-             ng-model="message.text">
-      <button type="submit" class="btn btn-primary"
-              ng-click="publish()">Send</button>
-    </form>
-    <hr/>
-
-
-  <!-- Message List -->
-  <div id="messages" class="table-striped">
-    <div class="message" ng-repeat="message in messages | reverse">
-    <div class="avatar-frame">
-    <img ng-src="http://www.gravatar.com/avatar/{{ message.email | gravatar }}?s=60" class="avatar avatar-60 photo" height="60" width="60"/>
+    <div class="well">
+      <b ng-bind="'Status: ' + realtimeStatus">Status: Connecting...</b>
+      <form class="form-horizontal">
+        <label>Name:</label>
+        <input placeholder="Your Name" type="text" name="username" autofocus
+               ng-model="message.username">
+        <br/>
+        <label>Email:</label>
+        <input placeholder="Your Email" type="text" name="email"
+               ng-model="message.email">
+        <br/>
+        <label>Message:</label>
+        <input placeholder="What's on your mind?" type="text" name="text"
+               ng-model="message.text">
+        <button type="submit" class="btn btn-primary"
+                ng-click="publish()">Send</button>
+      </form>
+      <hr/>
     </div>
-    <p class="user">{{ message.username }} said:</p>
-      <p class="text">{{ message.text }}</p>
+    <!-- Message List -->
+    <div id="messages" class="table-striped">
+      <div class="message ng-cloak"
+           ng-repeat="message in messages | reverse">
+      <div class="avatar-frame">
+      <img ng-src="http://www.gravatar.com/avatar/{{ message.email | gravatar }}?s=60" class="avatar avatar-60 photo" height="60" width="60"/>
+      </div>
+      <p class="user">{{ message.username }} said:</p>
+        <p class="text">{{ message.text }}</p>
+      </div>
     </div>
+    <!-- End Message List -->
+
   </div>
-
 </body>
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
