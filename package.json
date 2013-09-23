@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gdi2290/angular-pubnub"
+    "url": "git@github.com:gdi2290/angular-pubnub.git"
   },
   "licenses": [
     {
