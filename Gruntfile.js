@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         src: 'Gruntfile.js'
       },
       lib: {
-        src: ['angular-pubnub.js']
+        src: ['angular-pubnub.js', 'example/main.js']
       },
       test: {
         src: ['test/**/*.js']
@@ -36,13 +36,34 @@ module.exports = function (grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
       }
+    },
+    complexity: {
+      generic: {
+        src: ['angular-pubnub.js', 'example/main.js'],
+        options: {
+          jsLintXML: 'report.xml', // create XML JSLint-like report
+          checkstyleXML: 'checkstyle.xml', // create checkstyle report
+          errorsOnly: false, // show only maintainability errors
+          cyclomatic: 3,
+          halstead: 8,
+          maintainability: 100
+        }
+      }
     }
   });
+
+  // Test task
+  grunt.registerTask('test', [
+    'jshint',
+    'nodeunit',
+    'complexity'
+  ]);
 
   // Default task.
   grunt.registerTask('default', [
     'jshint',
-    'nodeunit'
+    'nodeunit',
+    'complexity'
   ]);
 
 };
