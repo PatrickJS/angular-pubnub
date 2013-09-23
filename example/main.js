@@ -75,17 +75,24 @@ angular.module('controllers', [])
         channel: $scope.channel,
         restore: false,
         disconnect: function() {
-          $scope.realtimeStatus = 'Disconnected';
+          $scope.$apply(function() {
+            $scope.realtimeStatus = 'Disconnected';
+          });
         },
         reconnect: function() {
-          $scope.realtimeStatus = 'Connected';
+          $scope.$apply(function() {
+            $scope.realtimeStatus = 'Connected';
+          });
         },
         connect: function() {
-          $scope.realtimeStatus = 'Connected';
-          //hide the progress bar
-          $('#progress_bar').slideToggle();
-          //load the message history from PubNub
-          $scope.history();
+          $scope.$apply(function() {
+
+            $scope.realtimeStatus = 'Connected';
+            // hide the progress bar
+            $('#progress_bar').slideToggle();
+            // load the message history from PubNub
+            $scope.history();
+          });
         }
       },
       function callback(message) {

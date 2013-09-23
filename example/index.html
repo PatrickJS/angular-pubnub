@@ -19,16 +19,17 @@
 
   <div ng-controller="MainCtrl">
     <div class="well">
+      <!-- Use ng-bind for initial text until angular kicks bootstraps -->
       <b ng-bind="'Status: ' + realtimeStatus">Status: Connecting...</b>
       <form class="form-horizontal">
         <label>Name:</label>
         <input placeholder="Your Name" type="text" name="username" autofocus
                ng-model="message.username">
-        <br/>
+        <br>
         <label>Email:</label>
         <input placeholder="Your Email" type="text" name="email"
                ng-model="message.email">
-        <br/>
+        <br>
         <label>Message:</label>
         <input placeholder="What's on your mind?" type="text" name="text"
                ng-model="message.text">
@@ -42,7 +43,7 @@
       <div class="message ng-cloak"
            ng-repeat="message in messages | reverse">
       <div class="avatar-frame">
-      <img ng-src="http://www.gravatar.com/avatar/{{ message.email | gravatar }}?s=60" class="avatar avatar-60 photo" height="60" width="60"/>
+        <img ng-src="http://www.gravatar.com/avatar/{{ message.email | gravatar }}?s=60" class="avatar avatar-60 photo" height="60" width="60"/>
       </div>
       <p class="user">{{ message.username }} said:</p>
         <p class="text">{{ message.text }}</p>
