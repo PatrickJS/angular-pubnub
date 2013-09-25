@@ -2,6 +2,15 @@
   "name": "angular-pubnub",
   "version": "0.0.8",
   "main": "angular-pubnub.js",
+  "ignore": [
+    "**/.*",
+    "*.yml",
+    "*.xml",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
     "angular": "~1.2.0-rc.2"
   }
