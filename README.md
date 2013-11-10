@@ -17,7 +17,7 @@ You can download angular-pubnub by:
 <script src="app/bower_components/angular-pubnub/angular-pubnub.js"></script>
 <script>
   angular.module('YOUR_APP', [
-    'angular-pubnub'
+    'ngPubNub'
   ]);
 </script>
 

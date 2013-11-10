@@ -1,6 +1,6 @@
 // App Module
 angular.module('PubNubChat',[
-  'angular-pubnub',
+  'ngPubNub',
   'directives',
   'filters',
   'controllers',
@@ -10,12 +10,12 @@ angular.module('PubNubChat',[
 angular.module('directives', [])
   .directive('coolFade', function() {
     return {
-      compile: function(elm) {
+      compile: function(element) {
         //console.log('compiling');
-        $(elm).css('opacity', 0);
-        return function(scope, elm, attrs) {
+        $(element).css('opacity', 0);
+        return function(scope, element, attrs) {
          // console.log('animating');
-          $(elm).animate({ opacity : 1.0 }, 1000 );
+          $(element).animate({ opacity : 1.0 }, 1000 );
         };
       }
     };
@@ -36,7 +36,7 @@ angular.module('filters', ['md5'])
 
 // Controllers Module
 angular.module('controllers', [])
-  .controller('MainCtrl', function($scope, $PubNub) {
+  .controller('MainCtrl', function($scope, PubNub) {
     $scope.messages = [];
     $scope.realtimeStatus = "Connecting...";
     $scope.channel = "pubnub_chat";
@@ -44,7 +44,7 @@ angular.module('controllers', [])
 
     // publish a chat message
     $scope.publish = function() {
-      $PubNub.publish({
+      PubNub.publish({
         channel: $scope.channel,
         message: $scope.message
       },
@@ -59,7 +59,7 @@ angular.module('controllers', [])
 
     // gets the messages history
     $scope.history = function() {
-      $PubNub.history({
+      PubNub.history({
         channel: $scope.channel,
         limit: $scope.limit
       },
@@ -71,7 +71,7 @@ angular.module('controllers', [])
 
    // we'll leave these ones as is so that pubnub can
    // automagically trigger the events
-    $PubNub.subscribe({
+    PubNub.subscribe({
         channel: $scope.channel,
         restore: false,
         disconnect: function() {
