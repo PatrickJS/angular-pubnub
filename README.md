@@ -13,7 +13,7 @@ You can download angular-pubnub by:
 
 ````html
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
 <script src="app/bower_components/angular-pubnub/angular-pubnub.js"></script>
 <script>
   angular.module('YOUR_APP', [
